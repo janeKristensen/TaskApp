@@ -1,0 +1,53 @@
+App As appinfo:
+    BackEnabled: =true
+    Formulas: |+
+        =
+        AppTheme = {
+            palette: {
+                themeBackground: RGBA(174, 196, 182, 1),
+                themeScreenBackground: RGBA(233, 229, 221, 0.5),
+                themeTitleBar: RGBA(174, 196, 182, 0.7),
+                themePopUp: RGBA(225, 236, 229, 1),
+                themeLightText: RGBA(255, 255, 255, 1),
+                themeDarkText: RGBA(0, 0, 0, 1),
+                themeDarkerText: RGBA(42, 50, 45, 1),
+                themeHeader: RGBA(103, 139, 115, 1),
+                //themeButton: RGBA(33, 65, 50, 1),
+                themeButton: RGBA(95, 117, 103, 1),
+                themeDeleteButton: RGBA(184, 0, 0, 1),
+                themeButtonComplementary: RGBA(254, 81, 0, 0.7),
+                //themeButtonComplementary: RGBA(181, 136, 134, 1),
+                themeButtonComplementaryDarker: RGBA(151, 110, 108, 1),
+                themeButtonComplementarySecondary: RGBA(130, 148, 144, 1),
+                //themeButtonComplementarySecondary: RGBA(62, 150, 155, 0.5),
+                black: RGBA(0, 0, 0, 1),
+                white: RGBA(255, 255, 255, 1)
+            },
+            textsize: 
+            {
+                themeHeader: 26,
+                themeTitle: 22,
+                themeTitle2: 20,
+                themeText: 18
+            }
+        
+        };
+        
+    OnStart: |
+        =Set(varUserInitials, Office365Users.MyProfileV2().mailNickname); 
+        If(
+            Office365Users.UserPhotoMetadata(Office365Users.MyProfileV2().id).HasPhoto = false,
+            Set(varUserPhoto, SampleImage),
+            Set(varUserPhoto, Office365Users.UserPhoto(Office365Users.MyProfileV2().id))
+        );
+        ClearCollect(collectAllTasks, Tasks);
+        ClearCollect(collectMyTasks, Filter(collectAllTasks, Ansvarlig = varUserInitials));
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

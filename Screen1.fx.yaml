@@ -1,0 +1,21 @@
+Screen1 As screen:
+    LoadingSpinnerColor: =RGBA(100, 118, 132, 1)
+
+    HtmlText1 As htmlViewer:
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        Height: =660
+        HtmlText: |
+            ="<b>varUserInitials:</b> set in App OnStart to the mailNickname of user. <br> 
+            <b>varUserPhoto:</b> set in App OnStart to the user photo or default photo. <br>
+            <b>varViewAll:</b> calendar shows tasks from all users if true. <br>
+            <br>
+            <b>collectMyTasks:</b> colletion of users tasks. <br>
+            <b>collectMyOverdue:</b> number users tasks that have 30 days or less until duedate. <br>
+            <b>collectAllTasks:</b> collection of all Tasks. <br>
+            <b>collectAllOverdue:</b> number of all tasks that have 30 days or less until duedate. <br>"
+        Size: =13
+        Width: =1281
+        X: =44
+        Y: =40
+        ZIndex: =1
+
